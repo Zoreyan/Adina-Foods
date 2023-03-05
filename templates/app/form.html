@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Form</title>
+    <!--Google Font-->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+    <!--Stylesheet-->
+    <link rel="stylesheet" href="{% static 'app/styles/form.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Форма заказа</h1>
+        <p>Укажите имя, телефонный номер, адрес и мы с вами свяжемся.</p>
+        <form method="post">
+            {% csrf_token %}
+            <div class="row">
+                <div class="column">
+                    <label for="name">Имя</label>
+                    {{ form.name }}
+                </div>
+                <div class="column">
+                    <label for="email">Электронная почта</label>
+                    {{ form.email }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <label for="subject">Адрес</label>
+                    {{ form.address }}
+                </div>
+                <div class="column">
+                    <label for="contact">Контактный номер</label>
+                    {{ form.phone }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <label for="issue">Заказ</label>
+                    {{ form.text }}
+                </div>
+            </div>
+            <button type="submit">Отправить</button>
+        </form>
+    </div>
+
+ 
+</body>
+</html>

@@ -1,0 +1,117 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="{% static 'app/styles/style.css' %}">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Adina</title>
+</head>
+<body>
+    <header>
+        <a href="#home" class="logo">Adina</a>
+        <div class="bx bx-menu" id="menu-icon"></div>
+
+        <ul class="navbar">
+            <li><a href="#home">Главная</a></li>
+            <li><a href="#about">Обо мне</a></li>
+            <li><a href="#menu">Меню</a></li>
+            <li><a href="#contact">Контакты</a></li>
+        </ul>
+    </header>
+
+    <!-- home start -->
+
+    <section class="home" id="home">
+        <div class="home-text">
+            <h1>Adina</h1>
+            <h2>Десерты и готовки на <br/>заказ и доставку</h2>
+            <a href="{% url 'form' %}" class="btn">Заказать</a>
+        </div>
+
+        <div class="home-img">
+            <img src="{% static 'app/img/home.png' %}" alt="">
+        </div>
+    </section>
+
+    <!-- about start -->
+    <section class="about" id="about">
+        <div class="about-img">
+            <img src="{% static 'app/img/about.png' %}" alt="">
+        </div>
+
+        <div class="about-text">
+            <span>Обо мне</span>
+            <h2>Готовлю со вкусом</h2>
+            <p>тут будет описание про меня</p>
+            <a href="{% url 'form' %}" class="btn">Заказать</a>
+        </div>
+    </section>
+
+    <!-- about start -->
+
+    <section class="menu" id="menu">
+        <div class="heading">
+            <span>Меню</span>
+            <h2>Свежие и вкусные готовки</h2>
+        </div>
+
+        <div class="menu-container">
+            {% for product in products %}
+            <div class="box">
+                <div class="box-img">
+                    <img src="{{ product.image.url }}" alt="">
+                </div>
+                <h2>{{ product.title }}</h2>
+                <span>{{ product.price }} сом</span>
+            </div>
+            {% endfor %}
+    </section>
+
+    <!-- call to action -->
+    <section class="cta">
+        <h2>Закажите десерт с бесплатной доставкой</h2>
+        <a href="#contact" class="btn">Написать</a>
+    </section>
+
+    <!-- footer start -->
+    <footer class="contact" id="contact">
+        <div class="footer">
+            <div class="main">
+                <div class="col">
+                    <h4>Ссылки</h4>
+                    <ul>
+                        <li><a href="#home">Главная</a></li>
+                        <li><a href="#about">Обо мне</a></li>
+                        <li><a href="#menu">Меню</a></li>
+                        <li><a href="#contact">Контакты</a></li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <h4>Контактные данные</h4>
+                    <ul>
+                        <li><a href="#">г.Ош.ул.####</a></li>
+                        <li><a href="#">+996550038872</a></li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <h4>Напишите мне</h4>
+                    <div class="social">
+                        <a href="#"><box-icon type='logo' name='instagram' color="#fff"></box-icon></a>
+                        <a href="#"><box-icon name='telegram' type='logo' color="#fff"></box-icon></a>
+                        <a href="#"><box-icon name='whatsapp' type='logo' color="#fff"></box-icon></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{% static 'app/js/script.js' %}"></script>
+</body>
+</html>
