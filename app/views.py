@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Product
 from .forms import OrderForm
 
@@ -15,6 +15,7 @@ def form(request):
         form = OrderForm(request.POST)
         if form.is_valid():
             form.save()
+            return redirect('success')
     return render(request, 'app/form.html', {'form': form})
 
 def success(request):
